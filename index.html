@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bakery shop</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <script src="script.js"></script>
+    <script type="module">
+                    // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+            import { getAuth, onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+            apiKey: "AIzaSyCTZZw6-7l_OQ-oDrs1ZMI2y85l2WvrTRg",
+            authDomain: "e-commerce-2475a.firebaseapp.com",
+            projectId: "e-commerce-2475a",
+            storageBucket: "e-commerce-2475a.appspot.com",
+            messagingSenderId: "725630893576",
+            appId: "1:725630893576:web:803a54490c2300c1369bbd"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // User is signed out, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+                const uid = user.uid;
+                
+                window.location.replace("auth.html");
+            } 
+        });
+            document.getElementById("logout").addEventListener('click',function(){
+            
+
+                            signOut(auth).then(() => {
+                            window.location.replace("auth.html")
+                            }).catch((error) => {
+                            console.log(error);
+                            });
+                    })
+       
+        </script>
+
+    <section id="header">
+            <a href="#"><img src="img/logo.jfif" class="logo" width="150" ></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-bag"></i></a></li>
+                <li><a href="#" id="logout">logout</a></li>
+                
+
+            </ul>
+        </div>
+    </section>
+
+    <section id="hero">
+        <h2>Arun Bakery Welcomes You
+            </h2>
+        <h3> It's sweet,
+        it's fluffy,
+     it's delicious.</h3>
+        <p style="color: azure;"><i><strong>best way to start the day, and end the night. </strong></i></p><br>
+        <button><a href="shop.html">Shop Now</button></a>
+    </section>
+
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="img/save.png" width="150">
+            <h4>save money</h4>
+            </div>
+         
+        <div class="fe-box">
+            <img src="img/free.png" width="150">
+            <h4>free shipping</h4>
+        </div>
+                
+        <div class="fe-box">
+            <img src="img/intime.png" width="150">
+            <h4>delivery in time</h4>
+        </div>
+                   
+        <div class="fe-box">
+            <img src="img/onlineorder.png" width="150">
+             <h4>online order</h4>
+              
+        </div>
+        <div class="fe-box">
+            <img src="img/support.png" width="150">
+            <h4>24/7 support</h4>
+        </div>
+    </section>
+
+    <section id="banner" class="section-m1">
+        <h1>Order Above <span>799₹ </span></h1>
+        <h2>And Save Upto<span>100₹</span></h2><br><br>
+    </section>
+
+    <footer style="background-color: rgb(250, 243, 224);"class="section-p1"> 
+        <div >
+            <img src="img/logo.jfif" width="150">
+            <h4>contact</h4>
+            <p><strong>Address:</strong> 123,madhurai road,Sankar nagar,tirunelveli</p>
+            <p><strong>Phone:</strong> 0462-1230458,+91-9944665897</p>
+            <p><strong>Hours:</strong> 9.00 - 20.00, Mon - Sat</p>
+        </div>
+        <div class="copyright">
+            <p>Ⓒ 2022 - HTML CSS Ecommerce Template</p>
+        </div>
+    </footer>
+</body>
+</html>

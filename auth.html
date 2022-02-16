@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>login</title>
+    <link rel="stylesheet" href="authcss.css">
+   
+        
+    
+</head>
+<body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword ,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+apiKey: "AIzaSyCTZZw6-7l_OQ-oDrs1ZMI2y85l2WvrTRg",
+authDomain: "e-commerce-2475a.firebaseapp.com",
+projectId: "e-commerce-2475a",
+storageBucket: "e-commerce-2475a.appspot.com",
+messagingSenderId: "725630893576",
+appId: "1:725630893576:web:803a54490c2300c1369bbd"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+document.getElementById("login").addEventListener('click',function(){
+    const email1=document.getElementById("elogin").value
+    const password1=document.getElementById("plogin").value
+
+        signInWithEmailAndPassword(auth, email1, password1)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                  
+                    
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode + errorMessage);
+                document.getElementById("lbuser").style.visibility="visible";
+
+            });
+        })
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+                const uid = user.uid;
+                
+                window.location.replace("auth.html");
+            } else {
+                // User is signed out
+                window.location.replace("index.html")
+            }
+        });
+
+       
+
+
+
+
+</script>
+    <div class="center">
+     <h1>Login</h1>
+     <label id="lbuser" style="color: red;visibility: hidden; ">*Account not found</label>
+     <div id="form">
+       
+         <div class="txt_field">
+             
+             <input  id="elogin" type="text" required>
+             
+             <span></span>
+             <label>Gmail</label>
+         </div>
+         <div class="txt_field">
+            <input id="plogin" type="password" required>
+            <span></span>
+            <label>password</label>
+        </div>
+        
+        <button id="login" class="press" >login</button>
+        <div class="signup_link">
+        Not a member? <a href="auth2.html">Signup</a></div>
+        </div>
+    </div>
+    
+</body>
+</html>
+                    
