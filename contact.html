@@ -37,14 +37,14 @@
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 const uid = user.uid;
                 
-                window.location.replace("auth.html");
+                location.href="auth.html";
             } 
         });
         document.getElementById("logout").addEventListener('click',function(){
         
 
                         signOut(auth).then(() => {
-                        window.location.replace("auth.html")
+                            location.href="auth.html";
                         }).catch((error) => {
                         console.log(error);
                         });
