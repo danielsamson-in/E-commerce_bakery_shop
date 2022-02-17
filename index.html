@@ -33,12 +33,12 @@
             const app = initializeApp(firebaseConfig);
             const auth = getAuth(app);
             onAuthStateChanged(auth, (user) => {
-            if (!user) {
+            if (user) {
                 // User is signed out, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 const uid = user.uid;
                 
-                location.href="auth.html";
+                window.location.replace("auth.html");
             } 
         });
             document.getElementById("logout").addEventListener('click',function(){
