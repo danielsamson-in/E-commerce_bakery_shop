@@ -8,7 +8,15 @@ function sendMail()
         message: document.getElementById('msg').value,
         }).then(Response=>{
             console.log("success");
-            alert("response send :D")
+            swal({
+                title: 'done!',
+                text: 'Mail send:)!',
+                icon: 'success'
+
+              }).then(function(){
+                  window.location.reload()
+
+              })
         },(error)=>{
             console.log(error);
         })

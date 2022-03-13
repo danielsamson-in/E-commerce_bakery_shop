@@ -1,4 +1,4 @@
- 
+        
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
       
         // Your web app's Firebase configuration
@@ -49,13 +49,44 @@
         let add7 = document.getElementById("btn7");
         let add8 = document.getElementById("btn8");
 
+        function confirmAlert()
+        {
+        
+            swal({
+                title: "Are you sure?",
+                
+                icon: "warning",
+                buttons: [
+                  'No, cancel it!',
+                  'Yes, I am sure!'
+                ],
+                dangerMode: true,
+              }).then(function(isConfirm) {
+                if (isConfirm) {
+                  swal({
+                    title: 'done!',
+                    text: 'order placed!',
+                    icon: 'success'
 
+                  }).then(function(){
+                      window.location.reload()
 
+                  })
+                } else {
+                  swal({
+                    title: 'Cancelled!',
+                    text: 'order not placed!',
+                    icon: 'error'
+                  });
+                }
+              })
+        }
+        
         async function AddDocument_Custom1()
                 {
                     
-                    let a=confirm("Are you sure")
-                if(a){
+                    let a=confirmAlert();
+                    if(a){
                     var ref = doc(db,"Customerlist",Aphonenumber.value);
 
                     await setDoc(
@@ -70,20 +101,20 @@
                         }
                     )
                     .then(()=>{
-                        alert("order placed");
+                       
                     })
                     .catch((error)=>{
                         alert("unsuccessuful,error"+ error);
                     })
                 }
                 else{
-                    alert("order cancel")
+                   
                 }
             }
 
         async function AddDocument_Custom2()
                 {
-                    let a=confirm("Are you sure")
+                    let a=confirmAlert();
                     if(a){
                 var ref = doc(db,"Customerlist",Aphonenumber.value);
        
@@ -99,19 +130,19 @@
                        }
                    )
                     .then(()=>{
-                        alert("order placed");
+                        
                     })
                     .catch((error)=>{
                         alert("unsuccessuful,error"+ error);
                     })
                 }else{
-                    alert("order cancel")
+                  
                 }
             }
 
         async function AddDocument_Custom3()
                 {
-                    let a=confirm("Are you sure")
+                    let a=confirmAlert();
                     if(a){
             var ref = doc(db,"Customerlist",Aphonenumber.value);
        
@@ -127,20 +158,20 @@
                        }
                    )
                     .then(()=>{
-                        alert("order placed");
+                        
                     })
                     .catch((error)=>{
                         alert("unsuccessuful,error"+ error);
                     })
                 }
                 else{
-                    alert("order cancel")
+                    
                 }
             }
             
         async function AddDocument_Custom4()
                 {
-                    let a=confirm("Are you sure")
+                    let a=confirmAlert();
                     if(a){
                 var ref = doc(db,"Customerlist",Aphonenumber.value);
        
@@ -156,19 +187,19 @@
                        }
                    )
                     .then(()=>{
-                        alert("order placed");
+                     
                     })
                     .catch((error)=>{
                         alert("unsuccessuful,error"+ error);
                     })}
                     else{
-                        alert("order cancel")
+                     
                     }
             }
 
         async function AddDocument_Custom5()
                 {
-                    let a=confirm("Are you sure")
+                    let a=confirmAlert();
                     if(a){
                 var ref = doc(db,"Customerlist",Aphonenumber.value);
        
@@ -184,19 +215,19 @@
                        }
                    )
                     .then(()=>{
-                        alert("order placed");
+                       
                     })
                     .catch((error)=>{
                         alert("unsuccessuful,error"+ error);
                     })}
                     else{
-                        alert("order cancel")
+                      
                     }
             }
 
         async function AddDocument_Custom6()
                 {
-                    let a=confirm("Are you sure")
+                    let a=confirmAlert();
                     if(a){
                 var ref = doc(db,"Customerlist",Aphonenumber.value);
        
@@ -212,19 +243,19 @@
                        }
                    )
                     .then(()=>{
-                        alert("order placed");
+                        
                     })
                     .catch((error)=>{
                         alert("unsuccessuful,error"+ error);
                     })}
                     else{
-                        alert("order cancel")
+                        
                     }
             }
 
         async function AddDocument_Custom7()
                 {
-                    let a=confirm("Are you sure")
+                    let a=confirmAlert();
                 if(a){
                 var ref = doc(db,"Customerlist",Aphonenumber.value);
        
@@ -240,19 +271,19 @@
                        }
                    )
                     .then(()=>{
-                        alert("order placed");
+                      
                     })
                     .catch((error)=>{
                         alert("unsuccessuful,error"+ error);
                     })}
                     else{
-                        alert("order cancel")
+                    
                     }
             }
 
         async function AddDocument_Custom8()
                 {
-                    let a=confirm("Are you sure")
+                    let a=confirmAlert();
                     if(a){
                 var ref = doc(db,"Customerlist",Aphonenumber.value);
        
@@ -268,13 +299,13 @@
                        }
                    )
                     .then(()=>{
-                        alert("order placed");
+                        
                     })
                     .catch((error)=>{
                         alert("unsuccessuful,error"+ error);
                     })}
                     else{
-                        alert('order cancel')
+                       
                     }
             }
 
