@@ -5,6 +5,7 @@ function sendMail()
     {
         
         from_name: document.getElementById('fromname').value,
+        reply_to:document.getElementById('mai').value,
         message: document.getElementById('msg').value,
         }).then(Response=>{
             console.log("success");
