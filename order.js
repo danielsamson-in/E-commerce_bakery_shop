@@ -47,17 +47,51 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase
   
             }
             else{
-              alert("Order not found :(");
+              swal({
+                text: "Order not found!",
+                dangerMode:true,
+              });
               }
           }
 
             //--------------------------cancel_order--------------------//
+          function confirmAlert()
+        {
+        
+            swal({
+                title: "Are you sure?",
+                
+                icon: "warning",
+                buttons: [
+                  'No, cancel it!',
+                  'Yes, I am sure!'
+                ],
+                dangerMode: true,
+              }).then(function(isConfirm) {
+                if (isConfirm) {
+                  swal({
+                    title: 'done!',
+                    text: 'order cancelled!',
+                    icon: 'success'
 
+                  }).then(function(){
+                      window.location.reload()
+
+                  })
+                } else {
+                  swal({
+                    title: 'Cancelled!',
+                    text: 'order not Cancelled!',
+                    icon: 'error'
+                  });
+                }
+              })
+        }
           async function delADocument(){
             var ref = doc(db,"Customerlist",cellV.value);
   
             const docSnap = await getDoc(ref);
-            let a=confirm("Are you sure! Do you want to cancel this order?")
+            let a=confirmAlert();
             if(a){
             if(!docSnap.exists()){
               alert("Order not found" )
@@ -65,7 +99,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase
             }
            await deleteDoc(ref)
            .then(()=>{
-             alert("Order cancelled successfully");
+            
            })
            .catch((error)=>{
              alert("unsuccessful,error"+error)
@@ -74,7 +108,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase
             
             else
             {
-                alert("order not cancelled!");
+              
             }
         }
 

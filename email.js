@@ -8,7 +8,7 @@ function sendMail()
         reply_to:document.getElementById('mai').value,
         message: document.getElementById('msg').value,
         }).then(Response=>{
-            console.log("success");
+            
             swal({
                 title: 'done!',
                 text: 'Mail send:)!',
