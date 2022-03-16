@@ -55,43 +55,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase
           }
 
             //--------------------------cancel_order--------------------//
-          function confirmAlert()
-        {
-        
-            swal({
-                title: "Are you sure?",
-                
-                icon: "warning",
-                buttons: [
-                  'No, cancel it!',
-                  'Yes, I am sure!'
-                ],
-                dangerMode: true,
-              }).then(function(isConfirm) {
-                if (isConfirm) {
-                  swal({
-                    title: 'done!',
-                    text: 'order cancelled!',
-                    icon: 'success'
-
-                  }).then(function(){
-                      window.location.reload()
-
-                  })
-                } else {
-                  swal({
-                    title: 'Cancelled!',
-                    text: 'order not Cancelled!',
-                    icon: 'error'
-                  });
-                }
-              })
-        }
+         
           async function delADocument(){
             var ref = doc(db,"Customerlist",cellV.value);
   
             const docSnap = await getDoc(ref);
-            let a=confirmAlert();
+            let a=confirm("Are you sure");
             if(a){
             if(!docSnap.exists()){
               alert("Order not found" )
@@ -99,6 +68,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase
             }
            await deleteDoc(ref)
            .then(()=>{
+            swal({
+              title: 'done!',
+              text: 'order cancelled!',
+              icon: 'success'
+
+            }).then(function(){
+                window.location.reload()
+
+            })
             
            })
            .catch((error)=>{
@@ -108,6 +86,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase
             
             else
             {
+              swal({
+                title: 'Cancelled!',
+                text: 'order not Cancelled!',
+                icon: 'error'
+              });
               
             }
         }
